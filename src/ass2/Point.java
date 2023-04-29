@@ -55,12 +55,45 @@ public class Point {
      */
     @Override
     public boolean equals(Object obj) {
-        Point other = (Point) obj;
+        if (!(obj instanceof Point other)) {
+            return false;
+        }
         return Double.areEqual(this.x, other.x) && Double.areEqual(this.y, other.y);
     }
 
+    /**
+     * Generates hash code for this point.
+     *
+     * @return An integer representing the hash code for this point
+     */
     @Override
     public int hashCode() {
         return Objects.hash(this.x, this.y);
+    }
+
+    /**
+     * Checks whether this point is on the given vertical line segment.
+     *
+     * @param verticalLine A Line object representing a vertical line segment
+     * @return true if this point is on the given vertical line segment, false otherwise
+     */
+    public boolean isOnVerticalLine(Line verticalLine) {
+        if (!Double.areEqual(this.x, verticalLine.start().x)) {
+            return false;
+        }
+        return !(this.y < verticalLine.minY() || this.y > verticalLine.maxY());
+    }
+
+    /**
+     * Checks whether this point is on the given horizontal line segment.
+     *
+     * @param horizontalLine A Line object representing a horizontal line segment
+     * @return true if this point is on the given horizontal line segment, false otherwise
+     */
+    public boolean isOnHorizontalLine(Line horizontalLine) {
+        if (!Double.areEqual(this.y, horizontalLine.start().y)) {
+            return false;
+        }
+        return !(this.x < horizontalLine.minX() || this.x > horizontalLine.maxX());
     }
 }

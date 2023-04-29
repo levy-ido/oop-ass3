@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
@@ -19,7 +20,7 @@ public class TestRectangle {
     private static Rectangle rectangle;
 
     /**
-     * Initializations.
+     * Initializing upperLeft and rectangle.
      */
     @BeforeEach
     public void init() {

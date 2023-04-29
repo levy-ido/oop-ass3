@@ -112,6 +112,7 @@ public class Line {
     /**
      * Returns the intersection point between this line segment and a given rectangle closest to the start of this line
      * segment.
+     *
      * @param rect A Rectangle object representing a given rectangle
      * @return A Point object representing the intersection point between this line segment and a given rectangle
      * closest to the start of this line segment if this line segment intersects the given rectangle, null otherwise
@@ -120,13 +121,48 @@ public class Line {
         List<Point> intersectionPoints = rect.intersectionPoints(this);
         Point closestIntersectionPoint = null;
         double minDistance = java.lang.Double.POSITIVE_INFINITY;
-        for (Point intersectionPoint: intersectionPoints) {
+        for (Point intersectionPoint : intersectionPoints) {
             double distance = this.start.distance(intersectionPoint);
             if (distance < minDistance) {
-                minDistance = distance;
                 closestIntersectionPoint = intersectionPoint;
+                minDistance = distance;
             }
         }
         return closestIntersectionPoint;
+    }
+
+    /**
+     * @return A double representing this line segments' minimum x-coordinate
+     */
+    public double minX() {
+        return Math.min(this.start.getX(), this.end.getX());
+    }
+
+    /**
+     * @return A double representing this line segments' maximum x-coordinate
+     */
+    public double maxX() {
+        return Math.max(this.start.getX(), this.end.getX());
+    }
+
+    /**
+     * @return A double representing this line segments' minimum y-coordinate
+     */
+    public double minY() {
+        return Math.min(this.start.getY(), this.end.getY());
+    }
+
+    /**
+     * @return A double representing this line segments' maximum y-coordinate
+     */
+    public double maxY() {
+        return Math.max(this.start.getY(), this.end.getY());
+    }
+
+    /**
+     * @return A Point object representing the starting point of this line segment
+     */
+    public Point start() {
+        return this.start;
     }
 }
